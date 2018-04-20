@@ -5,8 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JejuConnectionMaker implements ConnectionMaker {
-    public JejuConnectionMaker() {
-    }
+
     @Override
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
