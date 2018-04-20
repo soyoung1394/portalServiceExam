@@ -4,10 +4,11 @@ import javax.sql.DataSource;
 import java.sql.*;
 
 public class JdbcContext {
-    DataSource dataSource;
-
-    public JdbcContext() {
+    public JdbcContext(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
+
+    DataSource dataSource;
 
     Product jdbcContextForGet(StatmentStrategy statmentStrategy) throws SQLException {
         Connection connection = null;
@@ -131,7 +132,6 @@ public class JdbcContext {
     void update(String sql, Object[] params) throws SQLException {
         StatmentStrategy statmentStrategy= connection -> {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
             for(int i=0; i<params.length; i++){
                 preparedStatement.setObject(i+1, params[i]);
             }
